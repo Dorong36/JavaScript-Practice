@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let url;
+        let name;
+
+        while(!url){
+            name = prompt("select one : naver, google, daum");
+            switch(name){
+                case "naver": url = "www.naver.com"; break;
+                case "google": url = "www.google.com"; break;
+                case "daum": url = "www.daum.net"; break;
+                default: alert("not exist on list");
+            }
+        }
+        location.href = "https://"+url;
+
+    </script>
+</body>
+</html>

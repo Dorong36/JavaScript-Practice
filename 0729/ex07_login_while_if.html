@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let id = "abc";
+        let pw = "123";
+        let result;
+
+        let inputID;
+        let inputPw;
+        let notSuccess = true;
+        
+        while(notSuccess){
+            inputID = prompt("id?", "");
+            if(inputID==id){
+                inputPw = prompt("pw?", "");
+                if(inputPw==pw){
+                    notSuccess=false
+                }else{
+                    alert("wrong password");
+                }
+            }else{
+                alert("wrong id");
+            }
+        }
+
+        document.write("login success");
+        
+        
+    </script>
+</body>
+</html>
