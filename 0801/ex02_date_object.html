@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        
+    <script>
+        let today = new Date();
+        let month = today.getMonth()+1;
+        let date = today.getDate();
+        let day = today.getDay();
+
+        let korDay = function(num){
+            let name;
+            switch(num){
+                case 0 : name = "일"; break;
+                case 1 : name = "월"; break;
+                case 2 : name = "화"; break;
+                case 3 : name = "수"; break;
+                case 4 : name = "목"; break;
+                case 5 : name = "금"; break;
+                case 6 : name = "토"; break;
+            }
+            return name;
+        }
+        
+        
+        let todayInfo = function(){
+            document.write(month+"월 ");
+            document.write(date+"일 ");
+            document.write(korDay(day)+"요일 ", "<br><br><br>");
+        }
+
+        todayInfo();
+
+        let grad = new Date(2022, 5, 22);
+        let theMonth = grad.getMonth()+1;
+        let theDate = grad.getDate();
+        let theDay = grad.getDay();
+
+        let gradInfo = function(){
+            document.write(theMonth+"월 ");
+            document.write(theDate+"일 ");
+            document.write(korDay(theDay)+"요일 ");
+        }
+        gradInfo();
+
+
+    </script>
+
+</body>
+</html>

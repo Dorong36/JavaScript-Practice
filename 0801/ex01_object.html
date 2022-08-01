@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let tv = new Object();
+        tv.color = "black";
+        tv.price = 3000000;
+        tv.info = function(){
+            document.write("tv color : " + tv.color, "<br>");
+            document.write("tv price : " + this.price, "<br>");
+        }
+
+        tv.info();
+
+        let car =  {
+            color : "red",
+            price : 300000000,
+            info : function(){
+                document.write("car color : " + this.color, "<br>");
+                document.write("car price : " + this.price, "<br>");
+            }
+        }
+
+        car.info();
+
+
+    </script>
+
+</body>
+</html>

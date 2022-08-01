@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let arr = [30, '따르릉', true];
+        document.write(arr[0]);
+        document.write(arr[1]);
+        document.write(arr[2]);
+
+        for(let i=0; i<arr.length; i++){
+            document.write(arr[i]);
+        }
+
+        let arr1 = [0,1,2,3,4];
+        let arr2 = [5,6,7,8,9];
+        let arr3 = [9,3,8,1,2];
+
+        // join
+        let result = arr1.join("-");
+        console.log(result);
+
+        // concat
+        result = arr1.concat(arr2);
+        console.log(result);
+
+        // slice
+        result = arr1.slice(1,3);
+        console.log(result);
+
+        // sort
+        result = arr3.sort();
+        console.log(result);
+
+        // reverse 
+        result = arr1.reverse();
+        console.log(result);
+
+        // pop, push / shift, unshift
+        console.log(arr1);
+        arr1.pop();
+        arr1.shift();
+        console.log(arr1);
+        arr1.push(0);
+        arr1.unshift(4);
+        console.log(arr1);
+
+    </script>
+</body>
+</html>
