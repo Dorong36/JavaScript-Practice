@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{font-size: larger;}
+    </style>
+</head>
+<body>
+    <h1>일정한 간격으로 값 증감</h1>
+    <h3>console에서 확인해주세요~~</h3>
+    <button onclick="clearInterval(auto1)">증가정지</button>&nbsp;&nbsp;&nbsp;<button onclick="clearInterval(auto2)">감소정지</button>
+
+    <script>
+        let addNum = 0;
+        let subNum = 1000;
+
+        let auto1 = setInterval(function(){
+            addNum++;
+            console.log("addNum : " + addNum);
+        }, 1000);
+
+        let auto2 = setInterval(function(){
+            subNum--;
+            console.log("subNum : " + subNum);
+        }, 1000);
+    </script>
+</body>
+</html>

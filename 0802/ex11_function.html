@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        * 함수 선언 방식
+        1. function 함수명(){}
+        2. 변수 = function(){} ===> 익명 함수 ==> 호이스팅 불가
+                            +) 호이스팅 : 위에서부터 한 줄 씩 코드를 실행한다 했을 때, 함수 선언보다 호출을 먼저 해도 
+                                        함수 정의문을 끌어올려 함수를 호출하는 것.
+     -->
+
+     <script>
+         let count = 0;
+
+         myFnc();  // 호이스팅으로 호출됨
+         myFnc2();   // 호이스팅으로 호출 안됨.
+
+         function myFnc(){
+             count++;
+             document.write(count, "<br>");
+         }
+
+         let myFnc2 = function(){
+             count++;
+             document.write(count, "<br>");
+         }
+
+         //myFnc2();    익명함수 선언 후에는 호출 가능. but 선언 전에 호출을 하면 뒤에것도 호출이 안됨!! (이거 주석 빼도 호출 안됨)
+
+
+
+     </script>
+</body>
+</html>

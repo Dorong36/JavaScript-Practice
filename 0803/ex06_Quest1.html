@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function chColor(){
+            let colors = ["#ff0", "#6c0", "#fcf", "#cf0", "#39f"];
+            let num = Math.floor(Math.random()*5);
+            let theBody = document.getElementById("theBody");
+            theBody.style.backgroundColor = colors[num];
+           
+
+        }
+    </script>
+</head>
+<body id="theBody">
+    <button onclick="chColor()">Change Background Color</button>
+</body>
+</html>

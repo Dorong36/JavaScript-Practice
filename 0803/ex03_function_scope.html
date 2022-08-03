@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        * scope : 변수 또는 함수의 유효 범위 의미.
+        * 지역변수(Local variation) / 지역함수 : 함수 스코프 안에서만 사용.
+        * 전역변수(Global variation) / 전역함수 : 자바스크립트 어디서든 사용할 수 있음.
+     -->
+     
+    <!-- 즉시 실행 함수 : 동일한 이름의 두 함수 간의 충돌 방지-->
+    <!-- 위에서 선언해도 동일한 이름을 가진 함수가 아래서 초기화 해버리는 문제 없애고, 위 함수를 즉시 실행 -->
+     <script>
+         (function(){
+             let num = 100;
+             function menu(){
+                num+=100;
+                alert(num);
+             }
+             menu();
+         }());
+
+         (function(){
+             let num = 100;
+             function menu(){
+                 alert(num);
+             }
+         }());
+     </script>
+
+</body>
+</html>

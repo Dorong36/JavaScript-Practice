@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let colors = ["red", "blue", "yellow", "green", "white"];
+        let cnt = 0;
+        
+        function change(){
+            if(cnt == 4){
+                cnt = 0;
+            }else{
+                cnt++;
+            }
+
+            let bodyTag = document.getElementById("theBody");
+            bodyTag.style.backgroundColor = colors[cnt];
+            // getElementById() ==> id로 문서 객체(태그) 선택
+            // 접근시 ==> 문서객체.style.스타일속성 = 새 값;
+        }
+
+
+    </script>
+</head>
+<body id="theBody">
+    <h1>Change background Color!!</h1>
+    <button onclick="change();">Change</button>
+
+    
+
+</body>
+</html>

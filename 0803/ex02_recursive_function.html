@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num = 0;
+        function testFunc(){
+            num++;
+            document.write(num, "<br>")
+            if(num == 10) return; // num이 10이면 멈춤
+
+            testFunc(); // num이 10이 아닌이상 다시 스스로 함수 호출
+        }
+
+        testFunc();
+    </script>
+</body>
+</html>

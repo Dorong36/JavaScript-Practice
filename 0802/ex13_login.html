@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 매개변수가 있는 함수
+        let id = prompt("id?", "");
+        let pw = prompt("pw?", "");
+
+        function logIn(id, pw){
+            if(id == "abc" && pw == 123){
+                document.write("로그인 성공!!");
+            }else{
+                document.write("로그인 실패!!")
+            }
+        }
+
+        logIn(id, pw);
+
+    </script>
+</body>
+</html>
