@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // JavaScript 에서 해시테이블은 Object, Map, Set이 있다.
+        // JS에서 key-value로 이루어진 자료구조는 Object가 대표적이었지만, Es6에서 Map과 Set이 추가되었다.
+
+        /*
+            ** Map 객체
+            - 주로 Object와 비교됨
+            - key-value로 이루어진 해시테이블
+            - 탐색은 get(), 삽입은 set()으로 한다.
+            - key는 고유값으로써, 단 한개만 존재한다.
+            - key 가능 자료형 : number, string, function, object, NaN
+        */
+
+        // value 설정 : set()
+        let map = new Map;
+
+        let number = 0;
+        let str = 'string';
+        let obj = {a : 1};
+        let fnc = () => {
+            console.log("fnc");
+        }
+
+        map.set(number, 4); //key에 number 가능
+        map.set(str, 1); // key에 string 가능
+        map.set(obj, 2); //key에 object 가능
+        map.set(fnc, 3); // key에 함수 가능
+        map.set(number, 0); // 덮어쓰기 가능
+
+        console.log(map); // Map(4) {0 => 0, "string" => 1, {…} => 2, ƒ => 3}
+
+
+        // value 얻기 : get()
+        let getFnc = []
+        getFnc.push(map.get(str)); // 1
+        getFnc.push(map.get(obj)); // 2
+        getFnc.push(map.get('none')); // undefined  
+        getFnc.push(map.get({ a: 1 })); // undefined, obj !== { a: 1 }
+
+        for(let i = 0; i<4; i++){console.log(getFnc[i])}
+
+        // value 찾기 : has()
+        map.has(str); // true
+        map.has(obj); // true
+        map.has('none'); // false  
+        // key, value 다 찾아서 true false로 반환
+
+        // value 삭제 : delete()
+        map.delete(str);
+        //console.log(map);
+
+        // value 갯수 : size
+        console.log(map.size);
+
+        // hash 탐색 : for-of문
+        // key, value 쌍으로 출력
+        for (let [key, value] of map) {
+            console.log(key + ' = ' + value)
+        }
+        
+        // key만 출력
+        for (let key of map.keys()) {
+            console.log(key)
+        }
+        
+        // value만 출력
+        for (let value of map.values()) {
+            console.log(value)
+        }
+
+        console.log(map.get(number));
+
+
+        // test
+        let test = new Map();
+        for(let i = 0; i < 5; i++){
+            test.set(i, []);
+        }
+
+        test.get(3).push("test");
+        console.log(test.get(3));
+
+        //test2
+        let test2 = new Map();
+        for(let i = 0; i < 5; i++){
+            test2.set(i, 0);
+        }
+
+        let newNum = test2.get(3) + 1;
+        test.set(3, newNum);
+        console.log(test.get(3));
+        
+
+
+    </script>
+</body>
+</html>

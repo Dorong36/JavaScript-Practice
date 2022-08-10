@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+        map함수는 callbackFunction을 실행한 결과를 가지고 새로운 배열을 만들 때 사용
+
+        array.map(callbackFunction(currenValue, index, array), thisArg)
+        filter, forEach와 같은 구문이다.
+
+        callbackFunction, thisArg 두개의 매개변수가 있고
+        callbackFunction은 currentValue, index, array 3개의 매개변수를 갖는다.
+
+        currentValue : 배열 내 현재 값
+        index : 배열 내 현재 값의 인덱스
+        array : 현재 배열
+        thisArg : callbackFunction 내에서 this로 사용될 값
+
+        🌟 map() 함수는 모든 배열의 값에 Function을 실행하는 Method이다.
+        */
+
+
+        // 새로운 배열 생성하기
+        let arr = [1, 2, 3, 4];
+        let newArr = arr.map(function(data) {
+             return data * 2;
+        })
+        console.log(newArr);
+
+
+        // 배열요소 index와 map함수 호출한 배열을 확인
+        arr.map(function(data, index, array) {
+        console.log(`*****${index}번째 index*****`);
+        console.log(`index ${index}번째 배열 요소의 data : ${data}`);
+        console.log(`아래는 map 함수를 호출한 배열`);
+        console.log(array);
+        })
+
+    </script>
+</body>
+</html>
