@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!! 03</p>
+    <button id="btn">button</button>
+
+    <script>
+
+        // 함수를 만들어보쟈
+        function fun1(){
+            // 방법1
+        }
+
+        var fun2 = function(){
+            // 방법2
+        }
+
+        // new!!
+        // 방법3 Arrow function
+        /*
+            장점이 있음!!
+
+            장점1
+            함수를 만드는 이유
+            - 코드들을 기능으로 묶고 싶을 때
+            - 입출력 기계를 만들고 싶을 때 
+                ===> 입출력 기계를 만들 때 보기 쉬움!!!!
+
+            장점2
+            파라미터가 하나 뿐일때 ==> 소괄호 생략 가능!!
+
+            장점3
+            리턴문 포함 코드가 한 줄이다? ==> 중괄호까지 생략 가능!!!
+
+        */
+        var fun3 = (num) => {
+
+            return num+10;
+        }
+        fun3(5);
+        console.log(fun3(5));
+
+        var fun4 = num => num+10;
+        console.log(fun4(7));
+
+
+        // Arrow function 예시
+        // 1. forEach 콜백함수
+        [1,2,3,4].forEach(a => console.log(a));
+
+        // 2. eventListener
+        document.getElementById("btn").addEventListener('click', 
+        e => console.log(this)   
+        // 여기선 좀 문제가 있는게 화살표함수에서 this는 상위의 값을 그대로 가져옴
+        // 화살표함수 쓰려면 e.currentTarget 써야함
+        );
+
+        // 3. object 안의 함수
+        var obj1 = {
+            fun1 : () => {
+                console.log(this);
+            }
+        }
+        obj1.fun1();
+
+    </script>
+</body>
+</html>

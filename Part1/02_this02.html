@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>hello!! 02</p>
+    <button id="btn">button</button>
+    <button id="btn2">button</button>
+    <script>
+
+        // object constructor
+        function objConstructor(){   
+            this.name = 'kim';
+            this.age = 25;       // 🌟 여기서 this는 새로 생성되는 오브젝트(instance)를 뜻함
+        }
+        var obj1 = new objConstructor();
+        // console.log(obj1);
+
+
+        // object eventlistener
+        document.getElementById("btn").addEventListener('click', function(e){
+            console.log(this);
+            console.log(e.currentTarget);   // 두 개 모두 동일하게 이벤트가 동작하는 html 요소가 출력
+            // 🌟 여기서 this는 이벤트가 동작하는 곳!!!
+        })
+
+        // case1
+        document.getElementById("btn2").addEventListener('click', function(e){
+            var array1 = [1,2,3];
+            array1.forEach(function(a){     // forEach에는 콜백함수(함수 안에 들어가는 함수) 들어감
+                console.log(this);    
+                // 여기서 this는 뭐??   => window
+                // 그냥 일반 함수에서 this는 윈도우!!
+            })
+        })
+
+        // case2 - 오브젝트 내에서 콜백함수를 쓴다면 this는?
+        var obj2 = {
+            name : ['kim', 'lee', 'park'],
+            func(){
+                console.log(this);   // 여기서는 본인을 포함한 오브젝트 의미
+                obj2.name.forEach(function(){
+                    console.log(this);    // 그저 함수일 뿐!!!  ==>  window 출력됨
+                })
+            }
+        }
+        obj2.func();
+
+        // case3
+        var obj3 = {
+            name : ['kim', 'lee', 'park'],
+            func(){
+                obj3.name.forEach(() => {
+                    console.log(this);    // 🧐 화살표 함수에서 this는 외부(상위) this 값을 그대로 가져다가 사용!!!!
+                })
+            }
+        }
+        obj3.func();
+
+
+    </script>
+</body>
+</html>

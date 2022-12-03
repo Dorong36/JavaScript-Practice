@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!! 04</p>
+    <button id="btn">button for Q3</button>
+
+    <script>
+
+        // Q1
+        var human = {
+            name : 'son',
+            sayHi : function(){
+                console.log('Hi, my name is ' + this.name);
+            }
+        }
+        human.sayHi();
+
+        // Q2
+        var numbers = {
+            data : [1,2,3,4,5]
+        }
+        // 자료 외부에서 요소 추가할 수 있음!!
+        numbers.sum = function(){
+            var sumRes = 0;
+            this.data.forEach(a => sumRes += a);    // 외부에서 추가해도 this로 오브젝트 접근 가능
+            return(sumRes);
+        }
+        console.log(numbers.sum());
+
+        // Q3
+        /*
+            n초 후 함수 실행하고 싶을 때
+                =>  setTimeout(콜백함수, ms단위 시간)
+
+            만들어둔 함수 변수로 콜백함수 자리에 넣을 수 있음!!
+            그런데 이 경우에는 소괄호는 생략!!!
+        */
+        document.getElementById("btn").addEventListener('click', function(){
+            /* 안되는 코드
+            setTimeout(function(){console.log(this.innerHTML)}, 1000);
+            - function 안에서 this 값은 계속 변함!!!
+            - 여기서 this는 window!!
+            - window.innerHTML 출력하면 undefined 뜸!!
+            */
+            setTimeout(()=>console.log(this.innerHTML), 1000);
+            // 함수 밖에서 변수에 넣어서 사용하는 방법도 있음(화살표함수 나오기 전 방식)
+        });
+
+
+
+    </script>
+</body>
+</html>

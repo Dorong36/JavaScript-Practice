@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="hello">00</p>
+    <button id="button">button</button>
+
+    <script>
+        
+        document.getElementById("button").addEventListener('click', ()=>{
+            change('winter')
+        });
+
+        function change(name){
+            document.getElementById("hello").innerHTML = name;
+        }
+
+        var name = "Kim";
+        let age = 26; 
+
+        //array
+        let names = ['kim', 'yu', 3, [2,3], change];
+        console.log(names[3]);
+
+        //object
+        let nameO = {
+            first : 'kim',
+            last : 20
+        };
+        console.log(nameO.first);
+
+        // 코드 조건부 실행
+        let tf = false;
+        if(tf){
+            console.log('true');
+        }else {
+            console.log('false');
+        }
+
+        // for
+        for(let i = 0; i<5; i++){
+            console.log("for");
+        }
+
+        // forEach
+        let numbers = [1,2,3,4,5];
+        numbers.forEach(function(number){
+            console.log(number);
+        })
+
+
+    </script>
+
+
+</body>
+</html>

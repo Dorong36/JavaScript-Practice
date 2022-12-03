@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+
+    <script>
+
+        // 3. 자바스크립트 strict mode (엄격한 모드)
+        // 데이터타입 없이 쓰는거 불가능 해지는 등 바뀜
+        // 'use strict'
+
+        // 1. 그냥 this를 출력하면?
+        //console.log(this);    // window가 찍힘   ===>   strict mode 에서는? 그대로 window
+
+        // 2. 함수로 호출해도?
+        /*
+        function test(){
+            console.log(this);
+        }
+        test();   // window가 찍힘   ===>   strict mode 에서는? undefined
+        */
+        // 🌟 아무것도 없는 상태에서 찍히는 this의 window는 기본 함수들 수납공간
+
+        // 4. object 안에서
+        console.log(this);
+
+        var obj = {
+            data: 'kim',
+            func: function(){
+                console.log(this);
+                // 🌟 오브젝트 내부에서 this 쓰면 본인을 포함하고 있는 오브젝트 의미
+            }
+        }
+
+        obj.func();
+
+        // quiz 다음 this는?
+        var obj2 = {
+            data : {
+                func : function(){
+                    console.log(this);
+                }
+            }
+        }
+        obj2.data.func();  // 최상위가 아닌 현재 본인이 속한 오브젝트 출력
+
+
+        // quiz 응용
+        var obj3 = {
+            data : {
+                func : () => {
+                    console.log(this);   // 화살표함수 특징 : this 값을 함수 밖에 있던 것을 그대로 씀 => 전체 밖에 있던 window가 뜸
+                }
+            }
+        }
+        obj3.data.func();
+
+        // quiz 응용
+        var obj3 = {
+            data : {
+                func(){     // 신문법에서 함수는 key값 없이 그대로 써도 됨
+                    console.log(this);
+                }
+            }
+        }
+        obj3.data.func();
+
+
+        // 🌟🌟🌟 this의 뜻
+        // 1. window
+        // 2. 본인이 포함된 object
+        // 그런데 사실 따지고 보면 둘은 결국 같은 말
+        // 함수나 변수를 전역공간에서 만들면 {window}에 보관
+        // this를 출력하는 함수를 window.함수()로 출력해도 동일하게 window라는 결과가 나옴!!!
+        // 사실상 함수나 변수를 저장 하는 게 window라는 object에 저장하는것과 동일!!
+
+
+    </script>
+</body>
+</html>
