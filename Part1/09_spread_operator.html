@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!! 09</p>
+    <button id="btn">button</button>
+
+    <script>
+
+        // spread operator => ...
+        // 뭔가 내용물을 빼고 싶을 때 사용
+
+        // 1. array에 붙이면 대괄호 제거    
+        var array = ['hello', 'world'];
+        console.log(array);
+        console.log(...array);
+        
+        // 2. 문자에 붙이면 문자를 해체해서 펼쳐줌
+        var txt = 'hello';
+        console.log(...txt);
+
+
+        // 어디에 쓰면 좋을까
+        // 1. array 합치기, 복사
+        var a = [1,2,3];
+        var b = [4,5];
+
+        var c = [...a, ...b];
+        console.log(c);
+        
+        // 보기 편해서라기 보다는 Deep copy 할 때 유용
+        // 그냥 복사를 할 때
+        var arr1 = [1,2,3];
+        var arr2 = arr1;   // 이렇게 하면
+        console.log(arr1);
+        console.log(arr2);  // 잘 된것처럼 보이지만?
+
+        arr1[3] = 4;
+        console.log(arr1);
+        console.log(arr2);  // 🌟 reference data type => 값을 공유
+
+        // 각각 독립적인 값을 가지도록 array, object를 복사하려면? => spread operator 이용
+        var arr3 = [1,2,3]
+        var arr4 = [...arr3];   // 이렇게 하면
+        console.log(arr3);
+        console.log(arr4);  // 잘 된것처럼 보이지만?
+
+        arr3[3] = 4;
+        console.log(arr3);
+        console.log(arr4);
+
+
+        // 2. 오브젝트 합치기 / Deep copy
+        var obj1 = {a : 1, b : 2};
+        var obj2 = {...obj1, c : 3};
+        console.log(obj1);
+        console.log(obj2);
+
+        // deep copy
+        var obj3 = {a : 1, b : 2};
+        var obj4 = {...obj3};
+        // 유의점!! 카피하다가 값 중복이 일어나면?
+        var obj5 = {a : 1, b : 2};
+        var obj6 = {a : 7, ...obj3};
+        console.log(obj5);
+        console.log(obj6);   // a == 1  ==>  가장 뒤에 있는 값을 적용
+
+        var obj6 = {...obj3, a : 7};
+        console.log(obj6);   // a == 7
+
+        // ✅ spread operator 는 대괄호, 중괄호, 소괄호 안에서만 쓸 수 있음!!
+
+    </script>
+</body>
+</html>
