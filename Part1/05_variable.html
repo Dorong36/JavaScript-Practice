@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!! 05</p>
+    <button id="btn">button</button>
+    <script>
+
+        // 기존
+        var name1 = 'Kim';
+
+        // new!!
+        let name2 = 'yu';
+        const name3 = 'lee';
+
+        // 1. 변수의 특징
+        /*
+        선언 let name
+        할당            = 'kim';
+        재할당 name = 'yu';
+
+                 선언        할당        범위
+        var     재선언 O    재할당 O    function
+        let     재선언 X    재할당 O       {}
+        const   재선언 X    재할당 X       {}
+                           => const로 object 선언하면 내부 값 변경하는 것은 자유!!
+                             그건 재할당이 아님!!
+                                => 완전 수정불가능한 오브젝트는?
+                                    => Object.freeze(선언된 object)
+                                    => 'use strict' 사용 시 수정하면 오류
+        */
+
+        function fun1(){
+            var name4 = 'kim';
+            console.log(name4);
+        }
+        fun1();
+        // console.log(name4);    // 오류
+
+
+        // 2. 🌟 변수의 Hoisting 현상
+        /*
+            => 변수의 선언을 변수 범위 맨 위로 끌고오는 현상
+            변수를 만나면 선언부분을 강제로 맨 위로 끌어올림
+            원래 선언, 할당 부에서는 할당만!!
+
+            => 함수 선언도 호이스팅 대상!!
+        */
+
+        // ✅ 실상은 여기서
+        // var hoistingName; 이 선언되고
+
+        console.log(hoistingName);
+        // 보통은 선언 안했는데 출력하니 에러가 뜸
+        // 근데 존재는 하고 할당이 안되었다는 undefined로 뜸!!!(호이스팅)
+
+        var hoistingName = 'yu';
+        // ✅ 여기서
+        // hoistingName = 'yu'; 로 할당됨
+
+        console.log(hoistingName);
+
+
+        // +) 변수 동시에 여러개 만들기
+        var name = 'yu', age=26, gender='male';
+        // var let const 다 됨!!
+
+
+        // 3. 전역변수
+        /*
+        - 모든 곳에서 쓸 수 있는 변수
+        - 밖에 있는 변수는 내부에서 자유롭게 쓸 수 있음(함수 등)
+        - 가장 밖에 선언하면 전역변수가 된다!!
+        - 함수 등 내부에서 선언하면 "지역변수"
+        - 🌟 전역변수를 만들 수 있는 다른 방법이 있음!!
+            => window.name = 'kim';   <== 함수를 담을 수도 있음
+                => window는 자바스크립트 기본 함수를 담은 오브젝트
+        */
+
+        function tst(){
+            window.tstNum = 33;
+        }
+        tst();
+        console.log(tstNum);
+
+
+    </script>
+</body>
+</html>

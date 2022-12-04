@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+
+
+    <script>
+
+        var pants = 20;
+        var socks = 100;
+        console.log(`pants : ${pants} socks : ${socks} `);
+
+        // 1
+        function refact(texts, varb1, varb2){
+            return texts[1] + varb1 + ' ' + texts[0] + varb2;
+        }
+        console.log(refact`pants : ${pants} socks : ${socks} `);
+
+        // 2
+        pants = 0;
+        function stock(texts, varb1, varb2){
+            if(varb1 === 0){
+                return '바지 다 팔렸어요. ' + texts[1] + varb2;
+            }else {
+                return texts[0] + varb1 + ' ' + texts[1] + varb2;
+            }
+        }
+        console.log(stock`pants : ${pants} socks : ${socks} `);
+        
+
+        
+
+    </script>
+</body>
+</html>

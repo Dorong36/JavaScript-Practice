@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!! 07</p>
+    <button id="btn">button</button>
+
+    <script>
+
+        // 🌟 template literal
+        
+        // 기본 '', ""
+        let name1 = 'winter';
+
+        // 1. 엔터 가능!!!
+        let name2 = `kari
+        na`;     
+
+        // 2. 중간중간 변수 사용 가능!!!
+        let name3 = 'do0';
+        let intro1 = "hello i'm " + name3 + '!!!';
+        let intro2 = `hello i'm ${name3}!!!`;
+        console.log(intro1);
+        console.log(intro2);
+
+        // 3. tagged literal
+        let name4 = 'rei';
+        let intro3 = `hello i'm ${name4}!!!`;
+
+        function fun1(){
+            return 10;
+        }
+
+        // 함수 소괄호 대신 사용 가능
+        console.log(fun1`hello i'm ${name4}!!!`);
+        // 근데 소괄호 붙이면 될걸 굳이?? => 다 이유가 있음
+
+        function divideT(texts, varb){
+            console.log(texts);
+            console.log(varb);
+        }
+        console.log(divideT`hello i'm ${name4}!!!`);
+        // '문자'를 해체분석할 수 있음
+        // ✅ 단어 순서를 변경하거나 / 제거하거나 / 변수 위치를 옮기거나를 좀 더 쉽게!!
+        // 함수 선언하고 파라미터 두 개 넣기
+        // texts는 문자열 안의 문자들을 array로 반환
+        // varbs는 ${}변수 반환  ==>  변수가 여러개면 파라미터도 여러개로 선언!!
+
+
+        // 순서 변경해보자
+        // 기존이라면??
+        /*
+            문자열 자르기 함수
+            - substr(시작index, 갯수)
+            - substring(시작index, 끝index+1)
+            - slice(시작index, 끝index+1)
+                => 특이사항 : 마이너스 인덱스 사용 가능!! 제일 끝 문자부터 -1
+        */
+        function divideT2(texts, varb, varb2){
+            console.log(varb2 + texts[1] + varb + texts[0]);
+        }
+        divideT2`hello i'm ${name4}, nice to meet you ${name1}`;
+
+
+
+    </script>
+</body>
+</html>
