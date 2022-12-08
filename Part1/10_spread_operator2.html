@@ -38,7 +38,9 @@
         sum(arr[0], arr[1], arr[2]);
         // - 과거방식
         sum.apply(undefined, arr);
-            // 적용할 오브젝트가 undefined면 그냥 함수 실행 => 굳이 apply 쓴 이유는 파라미터로 array를 넣을 수 있으니까!! 근데 이제 안씀
+            // 적용할 오브젝트가 undefined면 그냥 함수 실행
+            //  => 굳이 apply 쓴 이유는 파라미터로 array를 넣을 수 있으니까!!
+            //      => 근데 이제 안씀
         // - 이제는!!
         sum(...arr);
 
@@ -58,7 +60,8 @@
         /*
         call => apply랑 거의 동일, 하나 다름
          => 만약 오브젝트 함수에 파라미터가 들어간다면
-            person1.hi.apply(person2, [파라미터1, 파라미터2, 파라미터3]);  파라미터 array 형식으로 넣기 가능
+            person1.hi.apply(person2, [파라미터1, 파라미터2, 파라미터3]);
+                => 파라미터 array 형식으로 넣기 가능
             person1.hi.call(person2, 파라미터1, 파라미터2, 파라미터3);
         */
 

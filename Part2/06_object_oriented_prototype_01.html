@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>2 - 06</p>
+    <button id="btn">button</button>
+    <script>
+
+        // JavaScript에만 있는 prototype!!!
+        // prototype은 부모의 유전자!!
+
+        function Students(name, age){
+            this.name = name;
+            this.age = age;
+            this.sayHi = function(){
+                console.log(`hello i'm ${this.name}!!`);
+            };
+        }
+        // constructor를 만들면 prototype이라는 공간이 자동으로 생김!!
+        // prototype에 값을 추가하면 모든 자식들이 물려받기 가능
+        Students.prototype.gender = 'male';
+
+        var stud1 = new Students('Kim', 20);
+        var stud2 = new Students('Yu', 10);
+
+        // 자식에 요소가 없으면 부모에게 넘어가 그 요소 값을 받아옴
+        console.log(stud1.gender);
+
+        // ✅ prototype의 동작원리 - 내장함수는 어떻게 동작하는가
+        console.log(stud1.toString());
+        // 자식요소에 해당 함수 없음 => 부모요소 prototype에 물어봄 => 없으면 또 부모 => 부모...
+        // 배열 만든다면
+        var arr = [1,2,3]
+        var arr = new Array(1,2,3) // 실제 array가 만들어지는 방식
+                                   //   => array 만드는 constructor에서 하나 뽑음
+                                   //   => 이것도 하나의 상속
+                                   //   => object도 마찬가지
+        arr.sort();
+        // arr.map();
+        // arr.push();             // 부모가 가지고 있기 때문에 다양한 내장함수 사용 가능
+
+
+    </script>
+</body>
+</html>

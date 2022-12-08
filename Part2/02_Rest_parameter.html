@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!! 2 - 02</p>
+    <button id="btn">button</button>
+    <script>
+
+        // 3. Rest parameter
+
+        // arguments의 단점
+        function func1(a,b,c){
+            // 반복문으로 사용하는데 특정 파라미터는 제외하고 싶다면? => 방법은 있으나 불편
+            for(let i = 0; i < arguments.length; i++){
+                console.log(arguments[i]);
+            }
+        }
+        func1(5,6,7);
+
+        // Rest parameter
+        function func2(...nums){
+            // 파라미터 앞에 붙은 ...은 spread operator와는 다른 의미 => rest parameter
+            // 함수 파라미터 자리 외에는 모두 spread operator
+            console.log(nums);
+        }
+        func2(1,2,3,4,5,6);   // 들어온 모든 파라미터를 []에 넣어 보관
+
+        /*
+        arguments와 차이
+            => argumetns : 모든 파라미터를 []에 담음
+            => rest parameter : ... 이후에 오는 모든 파라미터를 []에 담아줌
+        */
+        function func3(a, b, ...nums){
+            console.log(nums);
+        }
+        func3(1,2,3,4,5,6); 
+
+        // 예제
+        function func4(a, b, ...nums){
+            console.log(a+b)
+            for(let i = 0; i < nums.length; i++){
+                console.log(nums[i]);
+            }
+        }
+        func4(11,12,5,6,7,8);
+        // rest는 파라미터의 갯수를 지정해주지 않아도 된다는 장점 가짐
+
+        // 주의점
+        /*
+            1. 파라미터 중 가장 뒤에 써야 한다. ex) (...rest, a, b) <= 이런거 안됨
+            2. 두 번 이상 사용할 수 없음.
+        */
+
+    </script>
+</body>
+</html>

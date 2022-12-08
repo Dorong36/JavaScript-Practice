@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!! 2 - 03</p>
+    <button id="btn">button</button>
+    <script>
+
+        // Q1
+        // ['김', '밥', 1, 2, 3]
+
+        // Q2
+        // you
+
+        // Q3
+        // 9
+
+        // Q4
+        // 15
+
+        // Q5
+        function arr(...nums){
+            return nums;
+        }
+        var newArray = arr(1,2,3,4,5);
+        console.log(newArray); 
+
+        // Q6
+        var numbers = [1,2,3,4,5,5,6,7,5,5,6,7];
+        console.log(Math.max(...numbers));
+
+        // Q7
+        function sortFun(word){
+            // return [...word].sort();
+            return [...word].sort().join();   // join => 대괄호 없애서 문자열로
+        }
+        console.log(sortFun('bear'));
+
+        // Q8
+        function countStr(txts){
+            
+            /* 내가 푼 굉장히 비효율적인 답안
+            let txtStr = [...txts];
+            let txtSet = [...new Set(txtStr)].sort();
+            let count = new Array(txtSet.length);
+            count.fill(0,0,count.length);
+            for(let i = 0; i < txtStr.length; i++){
+                for(let j = 0; j < txtSet.length; j++){
+                    if(txtStr[i] == txtSet[j]){
+                        count[j] = count[j]+1
+                    }
+                }
+            }
+            let result = {};
+            for(let i = 0; i < txtSet.length; i++){
+                result[txtSet[i]] = count[i];
+            }
+            console.log(result);
+            */
+
+
+            // 예시답안
+            var result = {};
+            [...txts].sort().forEach(function(a){
+                if(result[a] > 0){
+                    result[a]++;
+                }else{
+                    result[a] = 1
+                }
+            });
+
+            console.log(result);
+            
+        }
+        countStr('aacbbb');
+
+
+    </script>
+</body>
+</html>

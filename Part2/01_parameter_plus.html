@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!! 01</p>
+    <button id="btn">button</button>
+    <script>
+
+        function sum1(a,b){
+            console.log(a+b)
+        }
+        sum1(1,2);
+        // javascript 특징 중 하나 => 파라미터 2개 들어가는 함수에 1개 넣어도 에러가 나지 않음
+        sum1(1);
+
+        // 1. 함수의 default 파라미터
+        function sum2(a,b = 2){    // default 파라미터에 수학 연산자 / 다른 파라미터 / 함수 사용 가능
+                                        // ex)         b = 3*5 / b = a + 6  /  b = func()
+            console.log(a+b)
+        }
+        sum2(3);   // 필요한 파라미터에서 부족하면 부족한 자리에 지정된 default 파라미터가 있으면 그대로 들어감
+        sum2(2,3);   // 필요한 파라미터 만큼 입력하면 그대로 들어감
+
+
+        // 2. 함수의 arguments
+        function func(a,b,c){
+            console.log(arguments);  // 모든 파라미터를 []안에 넣은 변수 => array와 유사한 자료형에 담김
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+            console.log(arguments[2]);
+        }
+        func(1,2,3);
+
+        // 예시. 모든 파라미터 콘솔에 출력하다면
+        function func2(a,b,c,d){
+            for(let i = 0; i < arguments.length; i++){
+                console.log(arguments[i]);
+            }
+        }
+        func2(5,6,7,8);
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>2 - 05</p>
+    <button id="btn">button</button>
+    <script>
+
+        // Constructor 문법의 용도
+        //  - 비슷한 object를 독립적으로 여러개 만들 때
+        
+        // 예시 - 출석부
+        // var stud1 = {name:'kim', age:15}; // 이런식으로 다 만드는 건 하드코딩
+
+        function Students(name, age){  // function으로 constructor 만듦. 이 경우 함수 이름은 대문자 시작이 불문률!!
+            this.name = name;  // 여기서 this => 새로 생성되는 object => 정식명칭 instance !!
+            this.age = age;
+            this.sayHi = function(){
+                console.log(`hello i'm ${this.name}!!`);
+            };
+        }
+        var stud1 = new Students('Kim', 20); // => 하나의 오브젝트 생성 
+        var stud2 = new Students('Yu', 10); //      => 공식명칭으로 "상속"!!
+
+
+        // 연습문제
+        function Stocks(name, price){
+            this.name = name;
+            this.price = price;
+            this.tax = function(){
+                console.log(this.price * 0.1)
+            }
+        }
+        var product1 = new Stocks('shirts', 50000);
+        var product2 = new Stocks('pants', 60000);
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>2 - 04</p>
+    <button id="btn">button</button>
+    <script>
+
+        var num = 1234;
+        // 일반 문자와 숫자는 Primitive data type
+        // 값이 그대로 변수에 저장이 됨
+        
+        var nums = [1,2,3,4];
+        var obj = {name : 'Kim'};
+        // reference가 변수에 저장 (값이 아님)
+
+        // primitive data type 다루기 : 복사 => 값을 그대로 복사
+        var name1 = 'Kim';
+        var name2 = name1;
+        name1 = 'Park';
+
+        // Reference data type 다루기 : 복사 => reference 값을 복사
+        var name3 = {name : 'Kim'}
+        var name4 = name3;
+        name3.name = 'Park';
+        // 새로 중괄호를 할 때마다 새로운 주소 할당
+
+        // Reference 예시
+        var name5 = {name : 'Kim'}
+        var name6 = {name : 'Kim'}
+        console.log(name5 == name6) // false!!! => 값 비교 X => 주소값 비교, 서로 다름
+
+        function objMod(obj){
+            obj = {name : 'Park'}  // 바뀌지 않음
+            /*
+                파라미터는 새로운 변수 생성 & 할당과 같음
+                함수 내부에서 들어온 오브젝트 변수를 조작해도 원래 오브젝트에는 변화가 없음
+            */
+        }
+        objMod(name5);
+        console.log(name5.name);
+
+    </script>
+</body>
+</html>
