@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>2 - 07</p>
+    <button id="btn">button</button>
+    <script>
+
+        // ✅ prototype의 특징
+        
+        // 1. prototype은 함수에만 생성됨
+        // 2. 부모의 prototype을 검사하고 싶다면 => __proto__
+        //     ex) stud1.__proto__  ===  Student.prototype
+        // 3. __proto__ 활용해서 부모 강제 등록하기
+        //     => __proto__ 직접 등록해서 object끼리 상속기능 구현
+        var parent = {name : 'Kim', age:30};
+        var son = {};
+        son.__proto__ = parent;
+        // 4. 콘솔창에서 알려주는 prototype chain
+        //  콘솔창에서 prototype 내용 거슬러 올라가 볼 수 있음
+        function Students(name, age){
+            this.name = name;
+            this.age = age;
+            this.sayHi = function(){
+                console.log(`hello i'm ${this.name}!!`);
+            };
+        }
+        Students.prototype.gender = 'male';
+        var stud1 = new Students('Kim', 20);
+
+
+    </script>
+</body>
+</html>

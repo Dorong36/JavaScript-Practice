@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>2 - 08</p>
+    <button id="btn">button</button>
+    <script>
+
+        // Q0
+        function Students(name, age){
+            this.name = name;
+            this.age = age;
+            this.sayHi = function(){
+                console.log(`Hi, i'm ${this.name} !!!`)
+            }
+        }
+        var stud1 = new Students('Kim', 20);
+        var stud2 = new Students('Park', 21);
+        var stud3 = new Students('Lee', 22);
+
+
+        // Q1
+        /*
+        function Parent(){
+            this.name = 'Kim';
+        }
+        var a = new Parent();
+
+        a.__proto__.name = 'Park';
+        console.log(a.name)
+        
+        <<답>>
+        'Kim' 입니다.
+        첫 4줄에 의해서 a = { name : 'Kim' } 이 되고 
+        a.__proto__.name = 'Park'; 이건 부모 prototype에 { name : 'Park' } 이걸 ⭐️ 추가 ⭐️ 하라는 뜻입니다.
+        그럼 이제 a.name 이라고 사용했을 때 
+        내가 직접 가지고 있는 { name : 'Kim' } 이걸 우선 출력해줍니다.
+        */
+
+
+        // Q2
+        // arrow function에서 this는 상위 요소를 그대로 받아옴.
+        // 여기서 this는 window
+
+
+        // Q3 🌟🌟🌟
+        Array.prototype.remove3 = function(){
+            for(let i = 0; i < this.length; i++){
+                // this는 현재 remove3 라는 함수를 작동시키는 object (여기서는 Array)
+                if(this[i] === 3){
+                    this.splice(i, 1);  // array.splice(시작 인덱스, 갯수) => 만큼 삭제
+                }
+            }
+        }
+
+        var arr = [1,2,3];
+        arr.remove3();
+        console.log(arr)
+
+    </script>
+</body>
+</html>

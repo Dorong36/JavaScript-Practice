@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>2 - 10</p>
+    <button id="btn">button</button>
+    <script>
+
+        class GrandFather {
+            constructor(name, hobby){
+                this.lastName = 'Yu';
+                this.firstName = name;
+                this.hobby = hobby;
+            }
+            // GrandFather prototype에 함수 추가 => 동일하게 상속됨
+            sayHi(){
+                console.log(`Hi, I'm grandFather`);
+            }
+        }
+        var grandFather = new GrandFather('dodo', 'soccer');
+
+        // 유사한 class 만들고 싶을 때 extends로 복사
+        // 🟩 super()의 용도
+        class Father extends GrandFather {
+            constructor(name, hobby){
+                super(name, hobby); // ✅ 물려받은 부모 class의 constructor를 의미
+                             //     => 부모가 가지고 있던 요소 그대로 가져옴 + 파라미터도!!
+                this.age = 50; // => 혼자 쓰면 에러!!
+                //                => extends해서 만든 class는 this 그냥은 못씀!! 위에 super() 써줘야함!!
+            }
+            sayHi(){
+                console.log(`Hi, I'm father`)
+                // super의 또다른 용도!!
+                super.sayHi();  // ✅ 부모 class의 prototype을 의미
+            }
+        }
+        var father = new Father('ung', 'baseball');
+
+        // super() / extends 용도는 외워두는게 중요!!
+
+    </script>
+</body>
+</html>

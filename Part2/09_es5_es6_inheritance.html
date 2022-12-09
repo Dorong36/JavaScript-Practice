@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>2 - 09</p>
+    <button id="btn">button</button>
+    <script>
+
+        // 상속 기능을 구현하는 다른 방법
+        // prototype 이나 function Fun(){} => 옛날 문법
+        // prototype 쓰지 않고 상속 기능 구현
+
+        // ES5
+        // Object.create(프로토타입 object);
+        var parent = {name : 'Kim', age : 50};
+        var son = Object.create(parent);  // 부모의 속성을 그대로 물려받음
+        son.name = 'Yu';
+        son.age = 20;
+
+        var sonSon = Object.create(son);
+        sonSon.name = 'Yang';
+        sonSon.age = 2;
+
+        // ES6
+        class parent1 {   // Constuctor 만드는 신문법
+            constructor(name){  // 파라미터 받기도 가능
+                this.name = name;
+                // 함수 추가 방법1
+                // this.sayHi = function(){console.log('Hi');}
+            }
+            // 함수 추가 방법2
+            sayHi(){console.log('Hi')}
+            // 여기에 쓰면 자식 오브젝트에 추가 안됨 => 부모의 prototype에 추가!!
+            // 함수 여러개도 가능
+            sayHello(){console.log('Hello')}
+        }
+        // 함수 직접 추가도 가능
+        parent1.prototype.sayGood = function(){console.log('Good!!')}
+
+        var son1 = new parent1('Yu');
+
+        // 프로토타입 출력 방법 또 있음
+        Object.getPrototypeOf(son1);
+
+
+        
+
+    </script>
+</body>
+</html>
