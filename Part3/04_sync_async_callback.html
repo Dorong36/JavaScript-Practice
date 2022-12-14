@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div></div>
+    
+    <script>
+        /*
+        # promise 사전 지식 느낌
+        
+        ✅ JS 동작방식
+        - JS는 동기식 처리(Synchronous)
+        - 한번에 코드 한 줄씩 처리
+
+        - 비동기식 처리(Asynchronous)를 도와주는 코드도 있음
+            => 오래 걸리는 작업 만나면 멈춤 => 뒤로 미뤄둠 => 정확히는 브라우저가 도와주는 것
+            => setTimeout, addEventListener 등 <= 그 자체, 혹은 실행까지 시간이 오래걸리는 함수들
+
+        - 크롬에서는 web API라는 공간으로 오래 걸리는 코드들을 보관, 실행할 타이밍에 넘겨줌
+            => Web API 덕분에 오래걸리는 작업이 있으면 보류하고 다른 것부터 처리하는 비동기식 처리 가능
+        
+
+        ✅ JS를 순차적으로 실행하려면?
+        - 코드 사이에 1초 쉬게 하고 싶다면?
+            => setTimeout에 콜백함수로 지정
+                => 콜백함수는 함수 안에 들어가는 함수
+
+        console.log(1);
+        setTimeout(function(){console.log(2)}, 1000);
+        addEventListener('click', function(){});
+
+        */
+
+
+        // ✅ 콜백함수를 이용한 함수디자인
+
+        function fun1(fun2){
+            console.log(1);
+            fun2();
+        }
+        function fun2(){
+            console.log(2)
+        }
+        // 두 함 수를 순차적으로 실행하고 싶음
+        // fun1();
+        // fun2();
+        // 순차적 실행? 실패할 수도 있음
+        fun1(fun2());
+
+        // 콜백함수는 동기 비동기와는 상관없이 함수 디자인 패턴일 뿐!!
+        // 비동기적 처리는 Web API 사용 문법들 사용하는 방법밖에 없음!!
+
+        // 콜백함수의 문제점
+        // 순차적으로 수행하려면?
+        fun1(function(){
+            fun2(function(){
+                // fun3 ... // 복잡해짐
+            })
+        });
+        // 더 쉽게 쓰기 위한 Promise 패턴
+        funs1().then(function(){
+
+        }).then(function(){
+            
+        })
+
+        
+    </script>
+
+</body>
+</html>

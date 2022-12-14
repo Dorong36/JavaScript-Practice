@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>3 - 6</p>
+    <button id="btn">button</button>
+    <img id="test" src="https://codingapple1.github.io/kona.jpg" alt="">
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
+
+    <script>
+
+        // Q1
+        var promise1 = new Promise(function(resolve, reject){
+            var testImg = document.getElementById('test')
+            // 이미지 로드 성공 여부 addEventListener에 'load'로 확인 가능
+            testImg.addEventListener('load', ()=>{return resolve();});
+            // 이미지 로드 실패 여부 addEventListener에 'error'로 확인 가능
+            testImg.addEventListener('error', ()=>{return reject();});
+        })
+
+        promise1.then(function(){
+            console.log('success');
+        }).catch(function(){
+            console.log('fail');
+        });
+
+        // Q2 + 확장
+        // jquery 문법
+        // get => 서버에 경로에 있는 데이터를 요청함
+        /*
+        $.get('https://codingapple1.github.io/hello.txt')
+        .done(function(result){
+            console.log(result);
+        })
+        */
+
+        // promise ver
+        /*
+        var promise2 = new Promise((resolve, reject)=>{
+            $.get('https://codingapple1.github.io/hello.txt')
+            .done(function(result){
+                resolve(result);
+            })
+        })
+        promise2.then(function(result){
+            console.log(result);
+            // 계속 then을 붙여서 단계적으로 실행하려면?
+            // 다음 then에 넘겨주는 promise return
+            return new Promise((resolve, reject)=>{
+                $.get('https://codingapple1.github.io/hello2.txt')
+                .done(function(result){
+                    resolve(result);
+                })
+            });
+            // promise를 넘겨줬기 때문에 .then을 붙여줄 수 있음
+        }).then(function(result){
+            console.log(result);
+        })
+        */
+
+
+        // 공통부분 function으로 묶을 수 있음
+        function ajaxFun(url){
+            return new Promise((resolve, reject)=>{
+                $.get(url)
+                .done(function(result){
+                resolve(result);
+                })
+            })
+        }
+
+        var promise3 = ajaxFun('https://codingapple1.github.io/hello.txt');
+        promise3.then(function(result){
+            console.log(result);
+            return ajaxFun('https://codingapple1.github.io/hello2.txt');
+        }).then(function(result){
+            console.log(result);
+        })
+        
+
+    </script>
+
+    
+</body>
+</html>

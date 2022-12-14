@@ -46,7 +46,7 @@
             name: 'yu',
             age : 26
         };
-        // 오브젝트 제이터 꺼내 변수에 담으려면?
+        // 오브젝트 데이터 꺼내 변수에 담으려면?
         var name = obj1.name;
         var age = obj1.age;
         // 이걸 destructuring으로 하면?
@@ -76,7 +76,7 @@
             console.log(name);
             console.log(age);
         }
-        fun1({ name: 'Yu', age : 26})
+        fun1(obj02)
 
         // 물론 배열도 마찬가지
         function fun2([name, age]){

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>3 - 5</p>
+    <button id="btn">button</button>
+
+    <script>
+
+        var promise = new Promise(function(resolve, reject){ // 성공 / 실패 판정 기계 promise 디자인
+                                        //   성공      실패
+            // 성공판정 내리는 법
+            resolve();
+            // 실패판정
+            // reject();
+            // 성공 실패 여부에 따라 then, catch 실행
+        });
+        // promise는 성공/실패를 판정하는 기계!!
+
+        promise.then(function(){ // 의미 : promise가 성공일 경우 내부 함수 실행 => 콜백함수 업그레이드 버전
+            // promise가 성공일 경우 실행할 코드
+        }).then(function(){  // 뒤에 계속 이을 수 있음
+
+        });
+
+        promise.catch(function(){  // catch => promise가 실패했을 경우 내부 함수 실행!!
+
+        });
+
+        promise.finally(function(){  // 성공, 실패 뭐든 일어났을 때 실행
+
+        })
+
+
+        // ✅ Promise 예시1
+        var prom = new Promise(function(resolve, reject){
+            var calc = 3+6; // 연산 실행
+            // 연산 이후 성공 실행 (동기식)
+            resolve(calc);
+            // reject(calc);
+            // 🔸 성공/실패 시 데이터 전달하기
+            //      => 파라미터 넣으면 => 성공 결과가 then(catch) 안쪽 함수까지 전해짐
+        })
+
+        prom.then(function(calc){
+            console.log(calc)
+        }).catch(function(result){
+            console.log(result)
+        })
+
+        // Promise 쓰는 이유
+        // 1. callback 함수에 비해 깔끔한 코드
+        // 2. 성공/실패 경우에 맞춰 각각 다른 코드 실행 가능
+
+
+        // ✅ Promise 예시2
+        var prom1 = new Promise(function(resolve, reject){
+            // 보통 ajax 등 좀 더 복잡한 연산이 쓰임
+            setTimeout(function(){
+                resolve(); // 1초 후 성공을 판정해주는 함수
+            }, 1000);
+        })
+        prom1.then(function(){
+            console.log('success')
+        }).catch(function(){
+            console.log('fail')
+        })
+
+
+        /* Promise의 3가지 상태
+            => 생성된 promise 콘솔에 입력하면 상태가 나옴
+            - 성공하면 resolved
+            - 판정 대기중이면 pending
+            - 실패하면 rejected
+        */
+
+
+        // Promise에 대한 오해
+        // - 동기적 처리를 비동기적 처리가 가능하게 바꿔주는 문법?
+        //   => no!! 단지 비동기 코드들이 들어갈 수 있을 뿐
+        // - 콜백함수의 대체일 뿐 필수는 아님!!
+
+        // 유사 문법
+        // $ajax().done(function(){}).fail()
+        // fetch().then().catch() => fetch는 항상 promise를 return => 성공실패 판단 가능
+
+
+
+    </script>
+</body>
+</html>
