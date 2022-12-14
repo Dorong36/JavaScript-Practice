@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>2 - 12</p>
+    <button id="btn">button</button>
+    <script>
+
+        // Q1
+        class Dog {
+            constructor(type, color){
+                this.type = type;
+                this.color = color;
+            }
+            // Q3
+            nextAge(){
+                if(this instanceof Cat){
+                    /*
+                    a instanceof b => a가 b로부터 생성된 오브젝트인지 true / false로 반환
+                    이것을 판단해 함수를 실행하면 dog에서 cat으로 상속은 되지만 dog 객체에서 실행 시 오류출력
+                    (cat에서는 되고 dog에서는 오류나게 하는게 문제의 목적이었음)
+                    */
+                    this.age++;
+                }
+            }
+        }
+        var dog1 = new Dog('puddle', 'brown');
+
+        // Q2
+        class Cat extends Dog{
+            constructor(type, color, age){
+                super(type, color)
+                this.age = age;
+            }
+        }
+        var cat1 = new Cat('cheese', 'yellow', 3);
+
+        // Q4
+        class Unit {
+            constructor(attack = 5, stem = 100){
+                this.attack = attack;
+                this.stem = stem;
+                // 파라미터 없이 this.stem = 100 이렇게 해도 기본값 들어감!!
+            }
+            get battlePoint(){
+                return this.attack + this.stem;
+            }
+            set heal(heal){
+                this.stem  = this.stem + heal;
+            }
+        }
+        var man = new Unit();
+
+        // Q5
+        var data = {
+            odd : [],
+            even : [],
+            setter(...nums){
+                for(let i = 0; i < nums.length; i++){
+                    if(nums[i] % 2 == 1){
+                        this.odd.push(nums[i]);
+                    }else {
+                        this.even.push(nums[i]);
+                    }
+                }
+                /*  ✅ for 대신 forEach도 사용 가능
+                nums.forEach((num) => {
+                    if(num % 2 == 1){
+                        this.odd.push(num);
+                    }else {
+                        this.even.push(num);
+                    }
+                });
+
+                🌟 만약 여기 forEach에서 콜백함수로 function을 쓴다면?
+                    => 함수가 새로 만들어지며 this의 의미가 window로 바뀌어버림!!
+                    => this값을 그대로 받아오기 위해 arrow function 사용!!
+                */
+                
+            },
+            get getter(){
+                nums = [...this.odd, ...this.even];
+
+                // 이것도 정답은 맞게 나옴
+                /* 
+                nums.sort();
+                return nums;
+                */
+
+                // ✅ but JS에서 정렬에 관한 상식
+                /*
+                - JS에서 단순 sort()는 문자열 정렬
+                - 고로 위 정렬은 숫자를 유니코드 문자로 취급해서 정렬한것
+                */
+
+                // sort()함수를 활용한 숫자 정렬
+                // 오름차순
+                nums.sort(function(a, b){
+                    return a-b;
+                })
+                // 내림차순
+                // nums.sort(function(a, b){
+                //     return b-a;
+                // })
+                return nums;
+            }
+        }
+
+    </script>
+</body>
+</html>

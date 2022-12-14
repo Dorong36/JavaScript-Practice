@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>3 - 2</p>
+    <button id="btn">button</button>
+
+    <!-- 
+        기존방법
+        <script src="./library.js"></script>
+    -->
+
+    <script type="module">
+
+        // ES6
+
+        // ✅ export default 값 가져오기
+        // import aaa from './library.js';
+        // console.log(aaa);
+        /*
+            - 모든 내용을 가져오지는 않음
+            - a라는 특정 변수 꺼내오는 문장
+            - export default로 내보낸 값을 가져오면
+            - import 할 때 이름을 바꿔도 상관 없음!
+        */
+
+        // ✅ 여러 export 값 각자 가져오기
+        // import {a, b, c} from './library.js'
+        // console.log(c);
+        /*
+            - 여러개 내보낸것 가져오려면 변수이름 똑같이 가져와야함!!
+        */
+        
+
+        // ✅ export와 export default 같이 썼을 때
+        // 그냥 아무렇게나 변수 이름으로 불러오면 default가 받아짐
+        // 다른 건 이름 같게!!
+        // import dddd from './library.js';
+        // console.log(dddd);
+
+        // default와 나머지 같이 가져오려면?
+        import dddd, {a,b,c} from './library.js';
+        // default값을 가장 먼저 써줘야 오류가 안난다!!
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        console.log(dddd);
+
+
+        // export에서 변수 불러올 때도 이름을 바꾸고 싶다면?
+        import {a as aaa} from './library.js';
+        console.log(aaa )
+
+        
+        // 편하게 다 불러온다면 * 이용
+        // but default 값은 따로 앞에서 불러와줘야함!!
+        import dd, * as nums from './library.js';
+        console.log(nums.a);  // as 별명 에서 .으로 접근
+        console.log(nums.b);
+        console.log(nums.c);
+        console.log(dd);    // default 값은 따로 불러온 이름으로 접근
+
+
+        // +) 옛날 방식
+        // var importContents = require('./library.js')
+
+        /* 
+        🔸 ES6의 module을 활용한 import export 문법은 IE에서 안되는 등 호환성 문제가 있을 수 있음
+            => 기존방법(src 이용)이 호환성이 좋고 일반적인 방법
+        */
+    </script>
+</body>
+</html>

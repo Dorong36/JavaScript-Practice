@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>3 - 3</p>
+    <button id="btn">button</button>
+
+    <script>
+
+        /*
+        
+        ✅ 웹브라우저 자바스크립트 작동원리
+            - Heap : 변수 등이 담겨있음
+            - Stack : 코드 실행부 => 한 줄씩만 실행 가능
+                => 자바스크립트 single threaded 라고 불리는 이유
+            - setTimeout 같은 함수는 Stack에서 처리를 안함 => 잠시 대기시키고 다른것들 먼저 실행
+                => 대기시키는 코드가 정해져있음 ex) Ajax 요청 코드 / eventlistener / setTimeout 등
+                    => setTimeout의 대기시간이 0초이더라도 무조건 일단 대기시킴
+            - 대기 중이던 코드는 실행 시킬 때 Queue에 하나씩 줄을 세움 => 하나씩 Stack으로 넘겨줌
+                =>> Stack이 비어있을 때만 올려보냄
+
+        ✅ 관련 사례
+            - 반복문이 너무 많은 연산? => JS에는 부적합한 코드임
+            - Stack에서 많은 연산을 계속 하고 있으면
+                => 그 동안 대기실에 빠져있던 eventListener, setTimeout 등은
+                    Queue에서 계속 실행이 안된 상태로 남아있음
+
+        ✅ 생각해볼것
+            - Stack에 과도한 연산 시키지 말자 => 무한 응답 대기 등 오류 발생
+            - Queue에 과도한 대기 시키지 말자 => 순차적으로 실행되기 때문에 대기시간 길어짐
+            - JS는 동기적? 비동기적?
+                => JS는 동기적으로 처리된다(한번에 한줄 순서대로)
+                => 가끔은 비동기적 처리도 가능 => setTimeout, eventListener, ajax 등
+
+        */
+
+
+
+    </script>
+</body>
+</html>

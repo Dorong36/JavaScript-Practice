@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>2 - 11</p>
+    <button id="btn">button</button>
+    <script>
+
+        var man = {
+            name : 'Park',
+            age : 30
+        }
+        // 나이 접근 방법1
+        man.age
+
+        // 최근에는 자료를 꺼내는 법을 만들어서 꺼냄
+        var human = {
+            name : 'Park',
+            age : 30,
+            // 내년 나이를 얻는 함수
+            nextAge(){
+                return this.age + 1;
+            },
+            setAge(age){ // setter 함수에는 꼭 파라미터가 1개 있어야함!!
+                this.age = parseInt(age); // 데이터 자료형 오류 등 예방
+            }
+        }
+        console.log(human.nextAge());
+        // human.age + 1 하면 될걸 왜 굳이 이렇게 함수로 만드나요?
+        /*
+        1. object 자료가 복잡할 때
+            - 단일 값이 아닌 배열 등 다양한 종류와 깊이가 있을 때 차라리 미리 접근하는 함수를 만들어 줌
+        2. object 자료 수정시
+            - 데이터 직접 수정시 실수 방지
+        */
+        human.setAge('200');
+        human.setAge(100);
+
+        // ES5부터 변경된 사항 => 옵션일 뿐 필수 아님!!
+        var human1 = {
+            name : 'Park',
+            age : 30,
+            set setAge(age){  // set 함수 앞에 set 붙여주기
+                this.age = parseInt(age);
+            },
+            get getAge(){ // getter 함수들은 return이 꼭 있어야함!! + 파라미터가 있으면 안됨!!
+                return this.age;
+            }
+        }
+        // set 붙여주면 소괄호 없이 표현 가능
+        human1.setAge = '50';
+        // get
+        human1.getAge;
+
+
+
+        // class에서 사용하는 get / set
+        class human2 {
+            constructor(){
+                this.name = 'Yu';
+                this.age = 26;
+            }
+            get getAge(){
+                return this.age;
+            }
+            getName(){
+                return this.name;
+            }
+            set setAge(age){
+                this.age = age;
+            }
+            setName(name){
+                this.name = name;
+            }
+        }
+
+        var ydy = new human2();
+        console.log(ydy.getAge);
+    </script>
+</body>
+</html>
