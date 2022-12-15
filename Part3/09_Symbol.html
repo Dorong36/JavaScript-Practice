@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>3 - 9</p>
+    <button id="btn">Click Here!!</button>
+
+
+    <script>
+
+        // ES6부터 추가된 Symbol이라는 자료형
+        // 실용성은 좀 떨어지는편
+
+        var sym = Symbol('hello');
+        // () 안 설명은 주석같은 느낌 => 아무렇게나 달아주면 됨
+        // 콘솔에 변수 치면 값 나옴
+
+        // ✅ Symbol 사용법
+        // symbol은 오브젝트의 키값으로 사용할 수 있음
+        var person = {name: 'Yu', age: 26};
+        // 오브젝트에 숨기고 싶은 데이터가 있다면? => symbol 사용
+        var weight = Symbol('my weight');
+        var height = Symbol('my height');
+        // 원래 object key값은 문자만 가능했는데
+        // 이제 symbol도 가능함
+        person[weight] = 86;
+        person[height] = 179;  // 이렇게 추가
+
+        // 콘솔에 person 치면 나오지만 반목문 등에서는 출력이 안됨!!
+        for(var data in person){
+            console.log(person[data]);
+        }
+        // symbol은 enumerable하지 않기 때문에 반복문에서 출력안됨!!
+
+        // +) symbol object 선언에서 직접 추가도 가능
+        var math = Symbol('math score');
+        var scoreAll = {korean: 90, [math]: 80};
+
+        // 사용예
+        // => import 해온 파일/라이브러리에 있던 object에 자료를 추가하고 싶을때
+
+
+
+        // ✅ Symbol 특징
+        // 1. 설명이 같다고 같은 Symbol이 아님!!
+        var a = Symbol('abc');
+        var b = Symbol('abc');
+        console.log(a==b); // false
+        // 설명은 그저 설명일뿐 각각 Symbol은 unique함!!
+
+        // 2. 전역 변수같은 전역 Symbol
+        var c = Symbol.for('cdcd');
+        var d = Symbol.for('cdcd'); // 같은 설명을 가진 심볼이 이미 있다면 복붙함
+        // var d = c 와 같은 의미
+        console.log(c==d); // true
+
+        // 3. 기본 내장 Symbol들
+        // 지난시간에 배운 내용 다시 봐보기
+        var arr = [1,2,3];
+        console.log(arr[Symbol.iterator]) // <= JS가 집어넣는 기본 Symbol
+        // 반복문에서는 출력 X
+
+
+
+
+
+
+
+
+
+    </script>
+
+    
+</body>
+</html>

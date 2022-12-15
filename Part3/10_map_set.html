@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>3 - 10</p>
+    <button id="btn">Click Here!!</button>
+
+
+    <script>
+
+        // ✅ Map
+        // key, value를 저장
+
+        // Map 자료형 만드는 법
+        var person = new Map();
+        person.set('name', 'Kim');
+        person.set('age', 20);
+        // 콘솔에 치면
+        // Map {"name" => "Kim", "age" => 20}
+        // 오브젝트와 비슷하지만 : 이 아닌 => 사용
+        // 🔸 map 자료형은 자료간의 연관성을 표현하기 위해 씀
+        // Object 자료형은 key값으로 글자만 가능 => Map은 다 가능!!
+        person.set(100, 'hundred')
+        person.set([1,2,3], 'array')
+
+        // Map 자료 꺼내는 법
+        person.get('name');
+        // 자료 지우기
+        person.delete('age');
+        // 자료 갯수 세는 법
+        person.size
+
+        // 반복문 사용 가능
+        for(var key of person.keys()){
+            console.log(person.get(key))
+        }
+
+        // Map 자료를 한 번에 만들려면
+        var man = new Map([
+            ['name', 'Kim'],
+            ['age', 20]
+        ]);
+
+
+
+        // ✅ Set
+        // 중복자료 허용하지 않는 Array와 비슷한 자료형
+        var check1 = ['Kim', 'Park', 'Lee', 'Park']; // 어머! 실수로 중복 자료가 들어갔다!
+        var check2 = new Set(['Kim', 'Park', 'Lee', 'Park']);
+        console.log(check1);
+        console.log(check2); // 중복 자료 자동으로 삭제
+
+        // 값 추가
+        check2.add('Yu'); // 중복이면 안들어감
+        // 값 제거
+        check2.delete('Kim');
+        // 데이터 보유 여부
+        console.log(check2.has('Yu'))
+        // 자료 갯수
+        console.log(check2.size)
+
+        // Array를 Set으로 바꾸기
+        var check3 = ['Kim', 'Park', 'Lee', 'Park'];
+        var check4 = new Set(check3); // 중복 제거
+        // but 배열은 아님
+        // 다시 Array로 바꾸고 싶다면?
+        var check5 = [...check4];
+
+        // 반복문 사용 가능
+
+
+    </script>
+
+    
+</body>
+</html>

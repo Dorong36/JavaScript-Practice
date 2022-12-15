@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>3 - 8</p>
+    <button id="btn">Click Here!!</button>
+
+
+    <script>
+
+        // JS는 반복문이 복잡한편
+        for (let i = 0; i < 3; i++){
+            console.log('Hi')
+        }
+
+
+        // 그래서 이후에 추가로 다양한 반복문이 나옴
+        // 1. Array 전용 forEach
+        [1,2,3].forEach((a) => console.log(a));
+
+
+        
+        
+
+
+        // ✅ 2. Object 전용 for in
+        // object에 있는 값을 모두 하나씩 꺼내서 사용할 때
+
+        var object = {name : 'Kim', age : 20}
+        // 번외) object 조회방법 두 가지
+        // object.name;
+        // object['name'] // 다른 변수명으로 조회하기 위해서는 이 방법만 가능!!
+        for(var key in object){ // object 자료 갯수만큼 반복
+            console.log(object[key])
+        }
+
+        // 🔸 특징1. enumerable한 것만 반복
+        // object의 key값에 대한 정보는 보이는 값 외에 세 가지 속성이 있음
+        console.log(Object.getOwnPropertyDescriptor(object, 'name'));
+        // => {value: "Kim", writable: true, enumerable: true, configurable: true}
+        // enumerable => 셀 수 있는지 여부 => 반복문에서 값 출력 여부이기도 함
+        // 일반 자료들은 항상 enumerable이 true가 기본값
+
+
+        // 🔸 특징2. 부모의 prototype도 반복해줌
+        // 직접 안넣어도 부모에 요소가 있으면 포함해서 반복함
+        class Parent{
+
+        }
+        Parent.prototype.name = 'Park';
+
+        var obj1 = new Parent();
+        for(var key in obj1){
+            console.log(obj1[key])
+            // 만약 부모 요소 제외하고 싶다면
+            // obj1.hasOwnProperty(key); <= true / false로 나옴
+            // 활용해서 출력여부 지정
+        }
+
+        // 🔸 특징3. Object 자료형에만 씀
+
+
+
+        // ✅ iterable 전용 for of
+        // 배열
+        var arr = [2,3,4,5];
+        for (var data of arr){
+            console.log(data);
+        }
+        // 문자열
+        for (var data of 'abcd'){
+            console.log(data);
+        }
+
+        // 🔸 특징. iterable한 자료형에만 사용가능
+        // array, 문자, arguments, NodeList, Map, Set 등
+        arr[Symbol.iterator](); // 이게 있으면 iteratora한 자료형
+        //                  내부 데이터 출력 도와주는 함수 같은것(그런가보다 하고 넘어가)
+        /* NodeList란
+            document.getElementsByClassName();
+            document.querySelectorAll();
+            등을 사용하면 []안에 html자료들이 들어옴
+                => 이 자료형이 정확히는 Array가 아닌 NodeList!!
+        */
+
+        // 활용해서 구구단 한번 출력해보기
+        var arr1 = [1,2,3,4,5,6,7,8,9];
+        document.write('<br><br>')
+        for(var dan1 of arr1){
+            for(var dan2 of arr1){
+                document.write(`${dan1} * ${dan2} = ${dan1*dan2}<br>`);
+            }
+            document.write('<br><br>')
+        }
+        
+
+
+
+    </script>
+
+    
+</body>
+</html>

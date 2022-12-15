@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: white;
+        }
+        * {
+            color: black;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>3 - 12</p>
+    <button id="btn">Click Here!!</button>
+
+    <input type="range" >
+    <!-- div 여러개가 안보이게 숨겨져 있음 => shadow DOM -->
+
+    <div id="shadow"></div>
+    <br><br><br>
+
+    <custom-input name="Id"></custom-input>
+    <label for="">style 영향을 받을까?</label>
+
+    <template id="shadowHtml">
+        <label>input your ID</label><input>
+        <style>label {color : red}</style>
+    </template>
+
+
+    <script>
+
+        // ✅ shadow DOM 만드는 법
+        // div 안에 shadowRoot 존재, 그 안에 html 숨길 수 있음
+
+        // shadowRoot 열어주기
+        document.querySelector('#shadow').attachShadow({mode : 'open'})
+
+        // html 추가하기
+        document.querySelector('#shadow').shadowRoot.innerHTML = 
+        '<p>Hello, shadowDOM!!</p>'
+
+        // 쓰는 이유? 예뻐서 그 이상 이하도 아님
+
+
+        // ✅ Web Components + shadow DOM ==> 완벽한 HTML 모듈
+        class CustomTest extends HTMLElement{
+            connectedCallback(){
+
+                // web components에 style 넣고 싶다면?
+                // 방법1 직접 style 넣기
+                /*
+                this.innerHTML = `<label>input your ID</label><input>
+                    <style>label {color : red}</style>
+                `
+                */
+                // 이렇게 하면 다른 label 태그들도 영향을 받음
+                // class나 id 지정하기에도 다른 태그들, 컴포넌트들 간에 겹칠 위험 있음
+
+                // 🔸 해결법 => shadow DOM 안에 넣자!!
+                // shadow DOM에 넣은 것들은 외부에 영향을 주지 않음!!
+                /*
+                this.attachShadow({mode : 'open'});
+                this.shadowRoot.innerHTML = `<label>input your ID</label><input>
+                <style>label {color : red}</style>
+                `
+                */
+                // 동일하게 출력, style 오염시키지 않음!!
+
+                // +) html 태그들 저렇게 쓰는거 보기싫어!! => html 임시보관함 쓰자
+                // => template태그!!
+                //      => 안에 쓰면 화면에 출력되지는 않음
+                this.attachShadow({mode : 'open'});
+                this.shadowRoot.append(shadowHtml.content.cloneNode(true));
+
+                // shadow DOM에 이벤트 리스너 부착가능
+                let el = this.shadowRoot.querySelector('label');
+                el.addEventListener('click', function(){
+                    console.log('클릭함');
+                })
+
+            }
+        }
+        customElements.define('custom-input', CustomTest)
+
+
+        
+
+
+    </script>
+
+    
+</body>
+</html>

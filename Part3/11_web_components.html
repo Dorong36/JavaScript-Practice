@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+            color: white;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>3 - 11</p>
+    <button id="btn">Click Here!!</button>
+
+    <custom-input name="Id"></custom-input>
+    <!-- 3️⃣ 커스텀태그 안에서도 파라미터 문법 등 구현 가능 -->
+    <custom-input name="Password"></custom-input>
+    <!-- 
+        4️⃣ attribute 변경 감지 기능 제공됨
+            => react의 props 변경에 따른 재렌더링 기능과 동일
+     -->
+
+    <script>
+
+        
+        // ✅ Web Components
+        // JS 문법은 아님!!
+        // JS 문법으로 구현할 수 있는 브라우저 기본 기능!!
+
+        // <커스텀태그>로 길고 복잡한 HTML 축약
+        // customElements.define('커스텀태그 이름', 사용할 HTML 요소들~~ 클래스 문법으로~)
+        class CustomTest extends HTMLElement{
+            connectedCallback(){
+
+                let name = this.getAttribute('name');
+                // 3️⃣ 파라미터 문법 값 가져오기
+
+                // 1️⃣ 축약할 html
+                this.innerHTML = `<label for="">input your ${name}</label><input>`
+                // 여기서 this는 새로 생성될 custom tag 의미
+
+                // 2️⃣ html 작성 방법2
+                // 생성 속도 빨라짐
+                /*
+                let addTag = document.createElement('label');
+                this.appendChild(addTag);
+                */
+
+            }
+            // 4️⃣ attribute 변경 감지
+            static get observedAttributes(){  // name이라는 attribute가 바뀌는지 감시
+                return ['name'];
+            }
+            attributeChangedCallback(){  // 바뀌면 이 함수 실행
+                // console.log(this.getAttribute('name'))
+                // attribute가 바뀔 때마다 재렌더링 하고싶다면? 렌더링 함수 다시 써주면 됨
+                let name = this.getAttribute('name');
+                this.innerHTML = `<label for="">input your ${name}</label><input>`
+            }
+        }
+        customElements.define('custom-input', CustomTest)
+        // 커스텀태그 장점은
+        // html 중복제거, 다른 페이지에서 재활용 가능
+
+
+        // 결론
+        /*
+        Web components 기능 쓰면 긴 HTML도 함수처럼 재사용 가능
+        근데 이런거에 특화되고 더 잘하는게 React, Vue
+        web components 기능 쉽게 쓰도록 도와주는 라이브러리도 있음 => Lit, Stencil 등
+        */
+
+        
+
+
+    </script>
+
+    
+</body>
+</html>
