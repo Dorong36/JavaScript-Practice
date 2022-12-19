@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: white;
+        }
+        * {
+            color: black;
+        }
+        button {
+            color: white;
+            background-color: rgb(44, 119, 0);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>hello!!<br>3 - 13</p>
+    <button id="btn">Click Here!!</button>
+
+
+
+    <script>
+
+        // object는 한 변수 안에 다양한 자료형을 넣는 자료형
+        var user = {
+            name : 'Kim',
+            age : 20,
+        };
+
+        // 원하는 자료 뽑기
+        console.log(user.name);
+        console.log(user['name']);
+
+        // ✅ 신문법 => optional chaining
+        console.log(user?.name);
+        // 왼쪽 자료가 null, undefined라면
+        // 오른쪽 .name 실행 안하고 undefined를 넘겨줌
+
+
+        // 언제 쓸까?
+        // 중첩된 object 자료에서 자료 뽑을 때 reference 에러 없이 안전하게 뽑을 수 있음
+        var human = {
+            name : 'Yu',
+            age : 26,
+            /*
+            score : {
+                korean : 96,
+                math : 92
+            }
+            */
+        }
+        // console.log(human.score.korean); // 중첩 오브젝트 조회
+        // 만약 실수로 score 입력 안했다면?
+        // console.log(human.score.korean); => 오류 발생, 아래 코드 모두 실행 안함
+        console.log(human.score?.korean);
+        // => 이렇게 하면 오류 안나고 undefined가 나옴
+        // ? 왼쪽 human.score가 undefined기 때문에 오른쪽 조회를 시작도 안함
+        //                                              => 오류 날 일이 없음
+
+
+        // 특이사항
+        var man = {
+            name : 'Park'
+        }
+        /*
+            오브젝트가 1차원이면 ?써도 의미가 없음
+                => 1차원에서 없는 key로 조회하면 원래 undefined 반환
+            다차원에서는 오류가 발생하기 때문에 사용하쟈!!
+        */
+
+        // 다양한 상황에서 사용 가능
+        console.log(document.querySelector('#a')?.innerHTML)
+
+        // but ?는 에러를 해결하는게 아님!! 잠깐 사용하는 용도
+
+
+        // ✅ nullish coalescing
+        console.log(undefined ?? '없어유')
+        // ?? 왼쪽이 undefined나 null이라면 오른쪽 출력
+        // 언제 쓰냐면
+        var bigDatas; // 데이터가 있는데
+        console.log(bigDatas ?? 'loading...') // 만약 서버에서 늦게 도착한다면?
+                                     // 도착 전에 undefined가 뜨기 전에 임시로 띄워줌
+
+
+        
+        
+       
+        
+
+
+        
+
+
+    </script>
+
+    
+</body>
+</html>
